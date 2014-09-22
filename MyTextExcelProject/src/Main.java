@@ -7,6 +7,7 @@ public class Main
 		System.out.println("This is the beginning of the TextExcel program");
 		System.out.println("I hope to add this to the main branch.");
 		System.out.println("Did this line work?");
+		System.out.println("Yes. It looks like it did.");
 		// Scanner input = new Scanner(System.in);
 		//
 		// System.out.print("Enter a number: ");

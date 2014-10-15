@@ -44,14 +44,34 @@ public class Spreadsheet
 	{
 		int col;
 		Integer row;
+		Scanner tempScanner = new Scanner(str);
+		String  token;
 		
 		col = cellID.charAt(0) - 'a';
 		row = Integer.valueOf(cellID.substring(1)) - 1;
 		
 		if (s.hasNext())
 		{
-			System.out.println("Adding string " + str + " to spreadSheet[" + row + "][" + col + "]");
-			spreadSheet[row][col] = new StringCell(str, s);
+			if (s.hasNextDouble())	{
+				System.out.println("Need to add RealCell object here");
+			}
+			else  {
+				// Get CellID
+				token = tempScanner.next();
+				// Get "="
+				token = tempScanner.next();
+				// Get the next token (which we are interested in
+				token = tempScanner.next();
+				System.out.println("token.charAt(0):\t" + token.charAt(0) + "\ttoken.charAt(end):\t" + token.charAt(token.length()-1));
+				if ((token.charAt(0) == '"') && (token.charAt(token.length()-1) == '"')) {
+					System.out.println("Adding string " + str + " to spreadSheet[" + row + "][" + col + "]");
+					spreadSheet[row][col] = new StringCell(str, s);					
+				}
+				else {
+					System.out.println("Either date or invalid string");
+				}
+			}
+
 		}
 	}
 	

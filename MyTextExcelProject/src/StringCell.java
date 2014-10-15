@@ -25,19 +25,27 @@ public class StringCell extends Cell {
 	public void printCell()
 	{
 		int fSpaces = 0, lSpaces = 0;
+		String noQuotes = value.substring(1, (value.length() - 1));
 		
-		// Handle the case where the string is > 12 chars
-		
-		fSpaces = (12 - (value.length() - 2))/2;
-		lSpaces = 12 - (value.length() - 2) - fSpaces;
-//		System.out.println("fSpaces:\t" + fSpaces + "\tlSpaces:\t" + lSpaces);
-		
-		for (int i=0; i<fSpaces; i++)	{
-			System.out.print(" ");
+		// Handle the case where the string is > CELL_WIDTH chars
+		if (noQuotes.length() > CELL_WIDTH)
+		{
+			// Print out only the first 11 characters and append with ">"
+			System.out.print(noQuotes.substring(0,11) + ">");
 		}
-		System.out.print(value.substring(1, value.length()-1));
-		for (int i=0; i<lSpaces; i++)	{
-			System.out.print(" ");
+		else
+		{
+			fSpaces = (CELL_WIDTH - noQuotes.length())/2;
+			lSpaces = CELL_WIDTH - noQuotes.length() - fSpaces;
+//			System.out.println("fSpaces:\t" + fSpaces + "\tlSpaces:\t" + lSpaces);
+		
+			for (int i=0; i<fSpaces; i++)	{
+				System.out.print(" ");
+			}
+			System.out.print(noQuotes);
+			for (int i=0; i<lSpaces; i++)	{
+				System.out.print(" ");
+			}
 		}
 		System.out.print("|");
 	}
